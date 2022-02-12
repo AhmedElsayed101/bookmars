@@ -10,6 +10,8 @@
 {% block content %}
 
     <h1>Dashboard</h1>
-    <p>Welcome to your dashborad.</p>
+    <p>Welcome to your dashborad. You can <a href="{% url "edit" %}">edit
+        your profile</a> or <a href="{% url "password_change" %}">change your
+        password</a>.</p>
   
 {% endblock content %}

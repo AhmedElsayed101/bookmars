@@ -12,12 +12,12 @@ class ImageCreateForm(forms.ModelForm):
 
         model = Image
         fields = ('title', 'url', 'description')
-        wedgets = {
+        widgets = {
             'url': forms.HiddenInput
         }
 
     def clean_url(self):
-        url = self.changed_data['url']
+        url = self.cleaned_data['url']
         valid_extensions = ['jpg', 'jpeg']
         extension = url.rsplit('.', 1)[1].lower()
         if extension not in valid_extensions:
@@ -25,6 +25,7 @@ class ImageCreateForm(forms.ModelForm):
                 'The given url does not match valid image extensions.')
 
         return url
+
 
     def save(self, force_insert=False, force_update=False, commit=True):
         image = super().save(commit=False)
